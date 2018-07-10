@@ -1,0 +1,40 @@
+{
+  "name": "webarchitect609/sitemap",
+  "description": "Generate sitemap.xml with respect to robots.txt disallow rules, according specification https://www.sitemaps.org and without dependencies from any framework or cms.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sergey Gripinskiy",
+      "email": "web-architect@mail.ru"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "doctrine/cache": "^1.6",
+    "doctrine/collections": "^1.4",
+    "jms/serializer": "^1.12",
+    "psr/log": "^1.0",
+    "vipnytt/robotstxtparser": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "WebArch\\Sitemap\\": "src/main"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WebArch\\Sitemap\\Test\\": "src/test"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "phpunit --coverage-html coverage"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,17 @@
+# I'm a dummy robots.txt designed as a part of fixture for unit-tests for webarchitect609/sitemap
+
+User-agent: Yandex
+Disallow: /index.php
+Disallow: /foo
+Disallow: /baz
+
+User-agent: *
+Disallow: /admin/
+Disallow: /*/search/
+Disallow: *.shtml
+# Bug: https://github.com/VIPnytt/RobotsTxtParser/issues/5
+# Disallow: /*.shtml$
+
+User-agent: Google
+Disallow: /
+
