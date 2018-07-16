@@ -53,6 +53,7 @@ class Url
      * @var string 0.0 - 1.0
      * @Type("string")
      * @SkipWhenEmpty
+     * @XmlElement(cdata=false)
      * @Groups({"sitemap"})
      */
     protected $priority = null;
