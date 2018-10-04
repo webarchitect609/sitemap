@@ -17,7 +17,7 @@ use WebArch\Sitemap\Exception\XmlSizeLimitException;
  * Class Sitemap
  * @package WebArch\Sitemap\Model
  *
- * @XmlRoot("urlset")
+ * @XmlRoot("urlset",namespace="http://www.sitemaps.org/schemas/sitemap/0.9")
  */
 class Sitemap
 {

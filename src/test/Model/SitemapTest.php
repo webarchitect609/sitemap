@@ -30,7 +30,7 @@ class SitemapTest extends TestBase
     {
         $this->expectedXml = <<<END
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>/some/url/location/goes/here</loc>
     <lastmod>2018-02-28T12:58:36+00:00</lastmod>
