@@ -173,12 +173,13 @@ class SitemapWriter implements LoggerAwareInterface
      */
     private function writeAllSitemaps()
     {
-        /** @var Sitemap $sitemap */
-        foreach ($this->getSitemapIndex() as $index => $sitemap) {
+        /** @var Sitemap $oldSitemap */
+        foreach ($this->getSitemapIndex() as $index => $oldSitemap) {
 
-            $sitemap = $this->respectRobotsTxt($sitemap);
+            $sitemap = $this->respectRobotsTxt($oldSitemap);
             //Заменить, т.к. было клонирование
-            $this->getSitemapIndex()->set($index, $sitemap);
+            $this->getSitemapIndex()->removeElement($oldSitemap);
+            $this->getSitemapIndex()->add($sitemap);
 
             $sitemap->withTmpFilename($this->generateTmpFilename())
                     ->refreshLastmod();

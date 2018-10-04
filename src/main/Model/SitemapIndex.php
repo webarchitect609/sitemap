@@ -61,19 +61,7 @@ class SitemapIndex extends ArrayCollection
         $this->collection = clone $this->collection;
     }
 
-    /**
-     * @param Sitemap $element
-     *
-     * @return bool
-     * @throws UnexpectedValueException
-     */
-    public function add($element)
-    {
-        $this->checkDouble($element);
-        $this->collection->set($element->getLoc(), $element);
 
-        return true;
-    }
 
     /**
      * @param Sitemap $sitemap
@@ -91,44 +79,6 @@ class SitemapIndex extends ArrayCollection
         $this->add($sitemap);
 
         return $this;
-    }
-
-    /**
-     * @param string $key игнорируется и благодаря этому дублей не будет.
-     * @param Sitemap $value
-     */
-    public function set($key, $value)
-    {
-        return $this->collection->set($value->getLoc(), $value);
-    }
-
-    /**
-     * @param $element
-     *
-     * @throws UnexpectedValueException
-     * @throws InvalidArgumentException
-     */
-    private function checkDouble($element)
-    {
-        if (!($element instanceof Sitemap)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'Expected %s , but got %s',
-                    Sitemap::class,
-                    get_class($element)
-                )
-            );
-        }
-
-        if ($this->offsetExists($element->getLoc())) {
-            throw new UnexpectedValueException(
-                sprintf(
-                    'Sitemap with loc `%s` already exists in the index',
-                    $element->getLoc()
-                )
-            );
-        }
-
     }
 
     /**
