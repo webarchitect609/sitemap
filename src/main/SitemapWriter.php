@@ -19,6 +19,7 @@ use WebArch\Sitemap\Enum\SerializationContextGroups;
 use WebArch\Sitemap\Exception\DeployException;
 use WebArch\Sitemap\Exception\UrlCountLimitException;
 use WebArch\Sitemap\Exception\XmlSizeLimitException;
+use WebArch\Sitemap\Model\Abstraction\BaseUrl;
 use WebArch\Sitemap\Model\Sitemap;
 use WebArch\Sitemap\Model\SitemapIndex;
 use WebArch\Sitemap\Model\Url;
@@ -149,7 +150,7 @@ class SitemapWriter implements LoggerAwareInterface
      *
      * TODO Возможно, надо сделать метод, который ловит исключение по ограничению кол-ва ссылок и заводит новый Sitemap?
      */
-    public function addUrl(Url $url)
+    public function addUrl(BaseUrl $url)
     {
         $this->defaultSitemap->addUrl($url, $this->getDomain());
 

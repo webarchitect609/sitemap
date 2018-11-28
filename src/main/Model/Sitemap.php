@@ -10,8 +10,10 @@ use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlList;
 use JMS\Serializer\Annotation\XmlRoot;
+use vipnytt\RobotsTxtParser\Client\Cache\MySQL\Base;
 use WebArch\Sitemap\Exception\UrlCountLimitException;
 use WebArch\Sitemap\Exception\XmlSizeLimitException;
+use WebArch\Sitemap\Model\Abstraction\BaseUrl;
 
 /**
  * Class Sitemap
@@ -102,8 +104,12 @@ class Sitemap
     {
         $maxLastMod = $this->getLastmod();
 
-        /** @var Url $url */
+        /** @var BaseUrl $url */
         foreach ($this->getUrlSet() as $url) {
+
+            if(!$url instanceof Url){
+                continue;
+            }
 
             if (!($url->getLastmod() instanceof DateTimeInterface)) {
                 continue;
@@ -169,7 +175,7 @@ class Sitemap
     }
 
     /**
-     * @param Url $url
+     * @param BaseUrl $url
      *
      * @param string $domain
      *
@@ -177,7 +183,7 @@ class Sitemap
      * @throws UrlCountLimitException
      * @throws XmlSizeLimitException
      */
-    public function addUrl(Url $url, string $domain = '')
+    public function addUrl(BaseUrl $url, string $domain = '')
     {
         if ('' != $domain) {
             $url = (clone $url)->withLoc($domain . $url->getLoc());

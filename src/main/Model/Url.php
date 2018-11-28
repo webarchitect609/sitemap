@@ -9,6 +9,7 @@ use JMS\Serializer\Annotation\SkipWhenEmpty;
 use JMS\Serializer\Annotation\Type;
 use JMS\Serializer\Annotation\XmlElement;
 use JMS\Serializer\Annotation\XmlRoot;
+use WebArch\Sitemap\Model\Abstraction\BaseUrl;
 
 /**
  * Class Url
@@ -17,7 +18,7 @@ use JMS\Serializer\Annotation\XmlRoot;
  * TODO Добавить в setters валидацию входных данных.
  * @XmlRoot(name="url")
  */
-class Url
+class Url extends BaseUrl
 {
     const LOC_MAX_LEN = 2048;
 
@@ -65,7 +66,7 @@ class Url
      */
     public function __construct($loc = '')
     {
-        $this->withLoc($loc);
+        parent::__construct($loc);
     }
 
     /**

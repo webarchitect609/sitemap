@@ -82,7 +82,7 @@ END;
 
         $this->expectedSitemapDefaultXml = <<<END
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://example.org/foo/bar</loc>
   </url>
@@ -145,7 +145,7 @@ END;
 
         $this->expectedSecondSitemapXml = <<<END
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://example.org/index.php</loc>
   </url>
@@ -166,7 +166,7 @@ END;
 
         $this->expectedEmptySitemapXml = <<<END
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset/>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>
 
 END;
 
