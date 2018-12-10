@@ -3,6 +3,7 @@
 
 namespace WebArch\Sitemap\Model;
 
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use JMS\Serializer\Annotation\Accessor;
 use JMS\Serializer\Annotation\Groups;
@@ -37,6 +38,14 @@ class ImageUrl extends BaseUrl
      * @XmlList(inline=true, entry="image:image")
      */
     protected $images;
+
+    /**
+     * @var DateTimeImmutable
+     * @XmlElement(cdata=false)
+     * @Type("DateTimeImmutable<'Y-m-d\TH:i:sP'>")
+     * @Groups({"sitemap"})
+     */
+    protected $lastmod;
 
 
     /**
@@ -75,6 +84,26 @@ class ImageUrl extends BaseUrl
     public function withImages($images): self
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * @return DateTimeImmutable|null
+     */
+    public function getLastmod()
+    {
+        return $this->lastmod;
+    }
+
+    /**
+     * @param DateTimeImmutable $lastmod
+     *
+     * @return $this
+     */
+    public function withLastmod(DateTimeImmutable $lastmod)
+    {
+        $this->lastmod = $lastmod;
 
         return $this;
     }

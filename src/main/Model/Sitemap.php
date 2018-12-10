@@ -107,7 +107,7 @@ class Sitemap
         /** @var BaseUrl $url */
         foreach ($this->getUrlSet() as $url) {
 
-            if(!$url instanceof Url){
+            if(!$url instanceof BaseUrl){
                 continue;
             }
 

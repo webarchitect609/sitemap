@@ -38,6 +38,7 @@ class ImageSitemapTest extends TestBase
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>/upload/example/1</loc>
+    <lastmod>2018-02-28T12:58:36+00:00</lastmod>
   </url>
   <url>
     <loc>/foo/bar/index.html</loc>
@@ -47,6 +48,7 @@ class ImageSitemapTest extends TestBase
     <image:image>
       <image:loc>/upload/example/2</image:loc>
     </image:image>
+    <lastmod>2018-02-28T12:58:36+00:00</lastmod>
   </url>
 </urlset>
 
@@ -91,9 +93,19 @@ END;
         //  Начало заполнения UrlSet
         $urlSet->add((new ImageUrl())
             ->withLoc('/upload/example/1')
+            ->withLastmod(DateTimeImmutable::createFromFormat(
+                'Y-m-d H:i:s',
+                '2018-02-28 12:58:36'
+            ))
         );
+
         $urlSet->add((new ImageUrl())->withLoc('/foo/bar/index.html')
-                                     ->withImages($images));
+                                     ->withImages($images)
+                                     ->withLastmod(DateTimeImmutable::createFromFormat(
+                                         'Y-m-d H:i:s',
+                                         '2018-02-28 12:58:36'
+                                     ))
+        );
 
         return $urlSet;
     }
